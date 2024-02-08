@@ -19,7 +19,7 @@ addBtn.addEventListener('click', () => {
     const trashBtn = document.createElement('button');
     trashBtn.textContent = "完了";
 
-    // 追加
+    // リストとボタンを追加
     li.appendChild(trashBtn);
     list.appendChild(li);
     addArea.value = "";
