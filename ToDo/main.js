@@ -26,7 +26,6 @@ addBtn.addEventListener('click', () => {
 
     // 完了ボタンで削除
     trashBtn.addEventListener('click', () => {
-        console.log(list);
         const target = trashBtn.parentNode;
         target.remove();
     });
