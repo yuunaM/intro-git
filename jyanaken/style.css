@@ -1,0 +1,51 @@
+/* div {
+  display: flex;
+  align-items: center;
+} */
+
+/* チャレンジ問題 */
+
+body {
+  text-align: center;
+}
+
+img {
+  width: 60%;
+}
+
+.player-hand div {
+    width: 49%;
+    padding: 3%;
+    box-sizing: border-box;
+    border-radius: 3px;
+}
+
+.player-hand .draw {
+  background-color: #ddd;
+}
+
+.player-hand .win {
+    background: #f9df8e;
+}
+
+.win p {
+  font-weight: bold;
+  color: #ff3535;
+}
+
+.player-hand div:first-child {
+  margin-right: 2%;
+}
+
+.select-hand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.player-hand {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  margin: 1rem auto 3rem;
+}
