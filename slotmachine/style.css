@@ -3,6 +3,7 @@ body {
 }
 p {
   display: inline-block;
+  margin: 0;
   font-size: 30px;
 }
 #setTime {
@@ -15,6 +16,10 @@ p {
 
 #startTimer {
     margin-top: 1rem;
+}
+
+.match {
+  color: red;
 }
 
 /*  チャレンジ問題 */
