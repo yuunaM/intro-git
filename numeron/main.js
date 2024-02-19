@@ -69,7 +69,7 @@ function judge(myNum) {
     if ( eat < 3 || bite < 0 ) {
         TurnHistory(`${bite} BITE ${eat} EAT`);
     } else {
-        TurnHistory('3EAT');
+        TurnHistory('!!!3EAT!!!');
         newGame();
     }
 }
@@ -92,7 +92,7 @@ function newGame() {
         newGameBtn.style.display = "none";
         cpNum = [];
         randomNumber();
-        turn = 11;
+        turn = 11; // 83行目のturn--でマイナスされるので11で渡す
         checkTurn();
         for (let i = resultArea.children.length - 1; i >= 0; i--) {
             resultArea.removeChild(resultArea.children[i]);
