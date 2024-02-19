@@ -1,0 +1,26 @@
+/* 追加チャレンジ問題 */
+img {
+  width: 100px;
+  height: 100px;
+}
+
+body {
+  text-align: center;
+}
+
+#wrap {
+    display: flex;
+    flex-wrap: wrap;
+    width: 200px;
+    margin: auto;
+}
+
+#wrap p {
+    width: 100px;
+}
+
+#newGame {
+    margin-top: 2rem;
+}
+
+/* 追加チャレンジ問題 ここまで */
