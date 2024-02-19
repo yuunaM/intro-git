@@ -24,10 +24,10 @@ function randomNumber() {
         }
     }
 }
-randomNumber();
+randomNumber(); 
 
 // ターン毎の履歴を作成
-function TurnHistory(result) {
+function TurnHistory(result) { // viewHistoryやleaveHistoryやwriteHistoryなどが適切かなと思います。
     const p = document.createElement('p');
     p.innerHTML = result;
     resultArea.appendChild(p);
@@ -92,7 +92,7 @@ function newGame() {
         newGameBtn.style.display = "none";
         cpNum = [];
         randomNumber();
-        turn = 11; // 83行目のturn--でマイナスされるので11で渡す
+        turn = 11; 
         checkTurn();
         for (let i = resultArea.children.length - 1; i >= 0; i--) {
             resultArea.removeChild(resultArea.children[i]);
@@ -108,3 +108,22 @@ check.addEventListener('click', () => {
 });
 
 
+// 27行目 関数を定義する場所と実行する場所をきちんと分けて書いた方が可読性が上がります。
+// 変数の定義場所、関数の定義場所、関数の実行の順番
+
+// 次に2に関してですが、関数は処理を表すものなので、基本的に動詞を使ってあげると良いと思います！
+// randomNumber -> createRandomNumbers
+// newGame -> startNewGame
+// 日本語に直してあげるとよくわかると思います！
+
+// cpNum.forEach((cp, cpNumIndex) => {
+//     myNum.forEach((my, myNumIndex) => {
+//         if (cp === my) {
+//             if (cpNumIndex === myNumIndex) {
+//                 eat++;
+//             } else {
+//                 bite++;
+//             }
+//         }
+//     });
+// });
