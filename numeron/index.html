@@ -12,16 +12,29 @@
           text-align: center;
       }
       .flex_box {
-           display: flex;
-            justify-content: space-around;
+          display: flex;
+          margin: 1rem 0 0;
+          justify-content: space-around;
       }
-      .flex_box * {
-          width: 30%;
+      .flex_box div {
+          width: 45%;
           text-align: left;
       }
-      .flex_box p:not(:last-child) {
+      .flex_box > div:not(:last-child) {
           margin-right: 5%;
-      } 
+      }
+      .flex_box p {
+          margin: 0;
+          line-height: 1.3;
+      }
+      #result p:nth-child(even) {
+          margin-bottom: 12px;
+          padding-bottom: 5px;
+          border-bottom: 1px dashed #d0c9c9;
+      }
+      #newGame {
+          margin: 1rem auto 0;
+      }
     </style>
   </head>
 
@@ -31,11 +44,10 @@
     <input type="number" id="answerNum" />
     <button type="submit" id="numCheck">答え合わせ</button>
     <div class="flex_box">
-        <p id="cpNumArea"></p>
-        <p id="result"></p>
-        <p id="remainTurn"></p>
+        <div id="result"></div>
+        <div id="remainTurn"></div>
     </div>
-    <p id="score"></p>
+    <button id="newGame">もう一度遊ぶ</button>
     <script src="./main.js"></script>
   </body>
 </html>
