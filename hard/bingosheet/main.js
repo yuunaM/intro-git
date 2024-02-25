@@ -12,19 +12,18 @@ const bingoArray = [
     {columnTitle: 'O', min: 61, max: 75}
 ];
 
-for (let i = 0; i < 5; i++) {
+for (let i = 0; i < columns; i++) {
     const { min, max } = bingoArray[i];
 
-    while (columnNum[i].length < 6) {
+    while (columnNum[i].length < rows) {
         const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
-    
         if (!columnNum[i].includes(randomNum)) {
             columnNum[i].push(randomNum);
         }
     }
 }
 
-for (let v = 0; v < 6; v++) {
+for (let v = 0; v < rows; v++) {
     const tr = document.createElement('tr');
 
     for (let i = 0; i < columns; i++) {
@@ -35,19 +34,18 @@ for (let v = 0; v < 6; v++) {
             const columnTitle = bingoArray[i].columnTitle;
             td.textContent = columnTitle;
         } 
-
         tr.appendChild(td);
     }
     table.appendChild(tr);
 }
 
+// ボタンクリックで同じ数字があればStyle変更
 hitNumBtn.addEventListener('click', () => {
-    
-    let hitNum = Math.floor(Math.random() * 75) + 1;
+    let hitNum = (Math.floor(Math.random() * 75) + 1).toString();
     const searchTd = document.getElementsByTagName('td');
 
     for (let i = 0; i < searchTd.length; i++) {
-        if (searchTd[i].textContent === hitNum.toString()) { // hitNumを文字列に変更
+        if (searchTd[i].textContent === hitNum) {
             searchTd[i].classList.add('hit-num');
         }
     }
