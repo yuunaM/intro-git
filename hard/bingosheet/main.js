@@ -5,6 +5,7 @@ const hitNumBtn = document.getElementById("hitNum");
 const hitNumArea = document.getElementById("hitNumArea");
 hitNumArea.innerText = "出た数字：";
 let hitNumArray = Array.from({ length: 75 }, (_, index) => index + 1);
+
 const bingoArray = [
   { columnTitle: "B", min: 1, max: 15 },
   { columnTitle: "I", min: 16, max: 30 },
@@ -25,7 +26,7 @@ function generateRandomNum() {
       }
     }
   }
-  createBingoSheet(columnNum);
+  return columnNum;
 }
 
 function createBingoSheet(bingoNum) {
@@ -57,7 +58,7 @@ function checkNumberMatch(hitNum) {
   hitNumArea.innerText = `出た数字：${hitNum}`;
 }
 
-generateRandomNum();
+createBingoSheet(generateRandomNum());
 
 hitNumBtn.addEventListener("click", () => {
   let index = Math.floor(Math.random() * hitNumArray.length);
