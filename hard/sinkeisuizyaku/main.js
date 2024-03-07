@@ -1,14 +1,5 @@
 let count = 0;
-let currentPlayer = 1;
-let player1Point = 0;
-let player2Point = 0;
 const cardNum = [1, 1, 2, 2, 3, 3, 4, 4];
-const nextPlayer = document.getElementById("nextPlayer");
-const player1 = document.getElementById("player1Point");
-const player2 = document.getElementById("player2Point");
-nextPlayer.textContent = `次はplayer${currentPlayer}の番です`;
-player1.textContent = `player1：${player1Point}`;
-player2.textContent = `player2：${player2Point}`;
 
 function shuffle() {
   for (let i = cardNum.length - 1; i > 0; i--) {
@@ -27,7 +18,7 @@ function createCard() {
 
     div.addEventListener("click", (event) => {
       cardOpen(cardNum[i], event.target, cards);
-    }); // 関数名で判断するのではなく、ここで行うべきかを考える
+    });
 
     panel.appendChild(div);
   }
@@ -48,17 +39,6 @@ function reverse(cards) {
   cards.length = 0;
 }
 
-function restart() {
-  alert("終了です！");
-  const divClassName = document.getElementsByClassName("card");
-  const divArray = Array.from(divClassName);
-  divArray.forEach((div) => {
-    div.classList.remove("finish");
-    div.classList.add("back");
-    div.textContent = "";
-  });
-}
-
 function cardOpen(cardNum, target, cards) {
   if (cards.length === 0) {
     target.textContent = cardNum;
@@ -73,16 +53,18 @@ function cardOpen(cardNum, target, cards) {
   }
 }
 
+const player1 = document.getElementById("player1Point");
+const player2 = document.getElementById("player2Point");
+let player1Point = 0;
+let player2Point = 0;
+player1.textContent = `player1：${player1Point}`;
+player2.textContent = `player2：${player2Point}`;
+
 function checkCardNum(cards) {
   if (cards[0].textContent === cards[1].textContent) {
     count++;
     playerPoint(count);
 
-    if (count === 4) {
-      setTimeout(() => {
-        restart();
-      }, 550);
-    }
     setTimeout(() => {
       finish(cards);
     }, 500);
@@ -93,6 +75,10 @@ function checkCardNum(cards) {
   }
 }
 
+const nextPlayer = document.getElementById("nextPlayer");
+let currentPlayer = 1;
+nextPlayer.textContent = `次はplayer${currentPlayer}の番です`;
+
 function playerChange(cards) {
   if (cards[0].textContent !== cards[1].textContent) {
     currentPlayer = currentPlayer === 1 ? 2 : 1;
@@ -101,7 +87,6 @@ function playerChange(cards) {
 }
 
 function playerPoint(count) {
-  console.log(count);
   if (currentPlayer === 1 && count) {
     player1Point++;
     player1.textContent = `player1：${player1Point}`;
@@ -109,6 +94,37 @@ function playerPoint(count) {
     player2Point++;
     player2.textContent = `player2：${player2Point}`;
   }
+
+  if (count === 4) {
+    setTimeout(() => {
+      if (player1Point > player2Point) {
+        alert("プレイヤー1の勝ち！");
+      } else if (player1Point < player2Point) {
+        alert("プレイヤー2の勝ち！");
+      } else {
+        alert("同点！");
+      }
+      restart();
+    }, 550);
+  }
+}
+
+function restart() {
+  const divClassName = document.getElementsByClassName("card");
+  const divArray = Array.from(divClassName);
+  divArray.forEach((div) => {
+    div.classList.remove("finish");
+    div.classList.add("back");
+    div.textContent = "";
+  });
+
+  player1Point = 0;
+  player2Point = 0;
+  player1.textContent = `player1：${player1Point}`;
+  player2.textContent = `player2：${player2Point}`;
+
+  currentPlayer = 1;
+  nextPlayer.textContent = `次はplayer${currentPlayer}の番です`;
 }
 
 createCard(shuffle());

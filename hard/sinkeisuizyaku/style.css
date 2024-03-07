@@ -28,3 +28,8 @@ panel {
   opacity: 0;
   cursor: default;
 }
+
+.wrap {
+    padding-top: 7rem;
+    padding-left: 1rem;
+}
